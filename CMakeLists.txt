@@ -1,6 +1,9 @@
 cmake_minimum_required(VERSION 2.4.6)
 include($ENV{ROS_ROOT}/core/rosbuild/rosbuild.cmake)
 
+# Verbosity is useful - helps Eclipse to find paths
+set(CMAKE_VERBOSE_MAKEFILE true)
+
 # Set the build type.  Options are:
 #  Coverage       : w/ debug symbols, w/o optimization, w/ code-coverage
 #  Debug          : w/ debug symbols, w/o optimization
@@ -28,4 +31,14 @@ rosbuild_gensrv()
 #rosbuild_link_boost(${PROJECT_NAME} thread)
 #rosbuild_add_executable(example examples/example.cpp)
 #target_link_libraries(example ${PROJECT_NAME})
-rosbuild_add_executable(tabletop_segmentation src/tabletop_segmentation)
+
+# Lib
+rosbuild_add_library(tabletop_segmentation src/tabletop_segmentation.cpp)
+
+# Node
+rosbuild_add_executable(tabletop_segmentor_node src/tabletop_segmentor_node.cpp)
+target_link_libraries(tabletop_segmentor_node tabletop_segmentation)
+
+# Nodelet
+rosbuild_add_library(tabletop_segmentor_nodelet src/tabletop_segmentor_nodelet.cpp)
+target_link_libraries(tabletop_segmentor_nodelet tabletop_segmentation)

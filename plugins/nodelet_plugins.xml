@@ -1,0 +1,8 @@
+<library path="lib/libtabletop_segmentor_nodelet">
+  <class name="tabletop_segmentor/TabletopSegmentorNodelet" type="tabletop_segmentor::TabletopSegmentorNodelet" base_class_type="nodelet::Nodelet">
+    <description>
+      Nodelet for running the tabletop segmentor
+    </description>
+  </class>
+</library>
+

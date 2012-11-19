@@ -32,14 +32,14 @@
 *  POSSIBILITY OF SUCH DAMAGE.
 *********************************************************************/
   
-// Author(s): Marius Muja and Matei Ciocarlie
-
-/*
-   Modified by Jihoon Lee , Brown University
-   Date : Feb 2012
-
-   - removed pointcloud2 to pointcloud conversion
-   - republish colored pointcloud
+/**
+ * @author: Marius Muja and Matei Ciocarlie, 2009
+ *
+ * Modified by Jihoon Lee, Brown University, Feb 2012:
+ *  - removed pointcloud2 to pointcloud conversion
+ *  - republish colored pointcloud
+ * Modified by Marcus Liebhardt, Yujin Robot, 2012
+ *  - added nodelet support
  */
 
 #include <string>

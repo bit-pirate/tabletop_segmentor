@@ -1,4 +1,3 @@
-
 /*********************************************************************
 *
 *  Copyright (c) 2009, Willow Garage, Inc.
@@ -32,19 +31,20 @@
 *  POSSIBILITY OF SUCH DAMAGE.
 *********************************************************************/
   
-// Author(s): Marius Muja and Matei Ciocarlie
-
-/*
-   Modified by Jihoon Lee , Brown University
-   Date : Feb 2012
-
-   - removed pointcloud2 to pointcloud conversion
-   - republish colored pointcloud
+/**
+ * @author: Marius Muja and Matei Ciocarlie, 2009
+ *
+ * Modified by Jihoon Lee, Brown University, Feb 2012:
+ *  - removed pointcloud2 to pointcloud conversion
+ *  - republish colored pointcloud
+ * Modified by Marcus Liebhardt, Yujin Robot, 2012
+ *  - added nodelet support
  */
 
 #include <tabletop_segmentor/tabletop_segmentation.h>
 
-namespace tabletop_segmentor {
+namespace tabletop_segmentor
+{
 
 //! Subscribes to and advertises topics; initializes fitter and marker publication flags
 /*! Also attempts to connect to database */
@@ -92,7 +92,7 @@ TabletopSegmentor::~TabletopSegmentor() {}
 /*! Processes the latest point cloud and gives back the resulting array of models.
  */
 bool TabletopSegmentor::serviceCallback(TabletopSegmentation::Request &request, 
-                                        TabletopSegmentation::Response &response)
+                                             TabletopSegmentation::Response &response)
 {
   ros::Time start_time = ros::Time::now();
   std::string topic = nh_.resolveName("cloud_in");
@@ -638,13 +638,3 @@ void TabletopSegmentor::straightenPoints(PointCloudType &points, const tf::Trans
 }
 
 } //namespace tabletop_object_detector
-
-int main(int argc, char **argv) 
-{
-  ros::init(argc, argv, "tabletop_segmentation_node");
-  ros::NodeHandle nh;
-
-  tabletop_segmentor::TabletopSegmentor node(nh);
-  ros::spin();
-  return 0;
-}

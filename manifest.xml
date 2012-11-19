@@ -13,14 +13,16 @@
   <depend package="pcl_ros"/>
   <depend package="sensor_msgs"/>
   <depend package="tabletop_object_detector"/>
-
   <depend package="common_rosdeps"/>
+  <depend package="nodelet"/>
+  
   <rosdep name="eigen" />
-  <export>
-     <cpp cflags="`pkg-config --cflags eigen3` -I${prefix}/include `rosboost-cfg --cflags`" 
-          lflags="-Wl,-rpath,${prefix}/lib -L${prefix}/lib -lplanning_models"/>
-  </export>
 
+  <export>
+    <cpp cflags="`pkg-config --cflags eigen3` -I${prefix}/include `rosboost-cfg --cflags`" 
+         lflags="-Wl,-rpath,${prefix}/lib -L${prefix}/lib -lplanning_models"/>
+    <nodelet plugin="${prefix}/plugins/nodelet_plugins.xml" />
+  </export>
 </package>
 
 
